@@ -1,6 +1,6 @@
 # NoteTaker
 
-A simple CLI tool to manage your notes from the command line. Create, search, and organize notes with tags, all stored in a local JSON database.
+A simple CLI tool to manage your notes from the command line. It is built on `yargs` ^18.0.0 for CLI parsing and command handling, and it lets you create, search, and organize notes with tags, all stored in a local JSON database.
 
 ## Features
 

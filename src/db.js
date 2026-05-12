@@ -1,8 +1,7 @@
 import fs from "node:fs/promises";
+import { fileURLToPath } from "node:url";
 
-const Db_Path = new URL("../db.json", import.meta.url).pathname;
-
-//const DB_PATH = path.join("..", "db.json");
+const Db_Path = fileURLToPath(new URL("../db.json", import.meta.url));
 
 //like ORM
 
@@ -20,7 +19,7 @@ export const saveDb = async (db) => {
   return db;
 };
 
-export const insertNoteIntoDV = async (note_content) => {
+export const insertNoteIntoDb = async (note_content) => {
   const db = await getDb();
   db.notes.push(note_content);
   await saveDb(db);

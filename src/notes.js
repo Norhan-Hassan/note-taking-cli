@@ -1,6 +1,6 @@
 import { saveDb, getDb, insertNoteIntoDb } from "./db.js";
 
-export const AddNewNote = async (note_content, tags) => {
+export const AddNewNote = async (note_content, tags = []) => {
   const newNote = {
     id: Date.now(),
     content: note_content,
@@ -17,10 +17,10 @@ export const getAllNotes = async () => {
 
 export const findNotesByName = async (note_search) => {
   const { notes } = await getDb();
-  const notes = notes.filter(
-    (note) => note.content.toUpperCase().includes(note_search.toUpperCase()), // include not smart to match the reversed words
+  const notesFiltered = notes.filter(
+    (note) => note.content.toUpperCase().includes(note_search.toUpperCase()), // include not smart to match the reversed words or letters
   );
-  return notes;
+  return notesFiltered;
 };
 
 export const removeAllNotes = async () => await saveDb({ notes: [] });

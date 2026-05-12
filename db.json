@@ -1,3 +1,26 @@
 {
-  "notes": []
+  "notes": [
+    {
+      "id": 1778595701931,
+      "content": "clean my room",
+      "tags": [
+        "housework"
+      ]
+    },
+    {
+      "id": 1778596641776,
+      "content": "read .net book",
+      "tags": [
+        "learning ",
+        " reading"
+      ]
+    },
+    {
+      "id": 1778596803384,
+      "content": "read efcore book",
+      "tags": [
+        "dotnet"
+      ]
+    }
+  ]
 }
