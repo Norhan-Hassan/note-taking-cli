@@ -65,7 +65,7 @@ describe("cli notes tests", () => {
     const result = await findNotesByName("Note 1");
     expect(result.content).toEqual([notes[0]].content);
   });
-  test("removeAllNotes should remove all notes from the database", async () => {
+  it("removeAllNotes should remove all notes from the database", async () => {
     const notes = [
       { id: 1, content: "Note 1", tags: ["tag1"] },
       { id: 2, content: "Note 2", tags: ["tag2"] },
