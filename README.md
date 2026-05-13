@@ -1,6 +1,6 @@
 # NoteTaker
 
-A simple CLI tool to manage your notes from the command line. It is built on `yargs` ^18.0.0 for CLI parsing and command handling, and it lets you create, search, and organize notes with tags, all stored in a local JSON database.
+A simple CLI tool to manage your notes from the command line. It uses `yargs` for CLI parsing and command handling, and it lets you create, search, and organize notes with tags, all stored in a local JSON database (`db.json`).
 
 ## Features
 
@@ -17,13 +17,22 @@ npm install
 npm link
 ```
 
-The `npm link` command makes the `notetaker` command globally available from your terminal , and you will not need to make it every time you use this code.
+The `npm link` command makes the `notetaker` command globally available from your terminal.
+
+### Run tests
+
+```bash
+npm test
+```
 
 ## Usage
 
 ```bash
-# Add a new note
+# Add a new note (use `-t` or `--tags` for comma-separated tags)
 notetaker new "Your note content" --tags important,work
+
+# or using alias
+notetaker new "Your note content" -t important,work
 
 # View all notes
 notetaker all
@@ -34,7 +43,7 @@ notetaker find "keyword"
 # Remove a note by ID
 notetaker remove 1234567890
 
-# Launch web interface on port 5000
+# Launch web interface (default port 5000)
 notetaker web
 
 # Launch web interface on custom port
@@ -46,7 +55,7 @@ notetaker clean
 
 ## Data Storage
 
-Notes are stored in a local `db.json` file with the following structure:
+Notes are stored in a local `db.json` file. Each note has an `id`, `content`, and `tags` (an array of strings). Example:
 
 ```json
 {
@@ -54,8 +63,13 @@ Notes are stored in a local `db.json` file with the following structure:
     {
       "id": 1234567890,
       "content": "Note content",
-      "tags": "tag1,tag2"
+      "tags": ["tag1", "tag2"]
     }
   ]
 }
 ```
+
+Notes about the implementation:
+
+- Tags are stored as an array (`tags: ["a","b"]`) and are provided on the CLI as a comma-separated string (e.g. `--tags "a,b"`).
+- The web interface uses port `5000` by default and will open your browser when launched.
